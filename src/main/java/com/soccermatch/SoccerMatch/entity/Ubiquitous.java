@@ -3,7 +3,7 @@ package com.soccermatch.SoccerMatch.entity;
 import javax.persistence.*;
 import java.util.List;
 @Entity
-@Table(name="Ubiquitou")
+@Table(name="Ubiquitous")
 public class Ubiquitous {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
