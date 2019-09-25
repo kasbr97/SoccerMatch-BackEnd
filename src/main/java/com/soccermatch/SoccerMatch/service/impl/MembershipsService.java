@@ -1,6 +1,7 @@
 package com.soccermatch.SoccerMatch.service.impl;
 
 import com.soccermatch.SoccerMatch.entity.Memberships;
+import com.soccermatch.SoccerMatch.entity.People;
 import com.soccermatch.SoccerMatch.repository.IMembershipsRepository;
 import com.soccermatch.SoccerMatch.service.IMembershipsService;
 
@@ -50,4 +51,8 @@ public class MembershipsService implements IMembershipsService {
     public void deleteAll() throws Exception {
         membershipsRepository.deleteAll();
     }
+	@Override
+	public List<People> fetchTeamMembers(Integer id) throws Exception {
+		return membershipsRepository.fetchTeamMembers(id);
+	}
 }

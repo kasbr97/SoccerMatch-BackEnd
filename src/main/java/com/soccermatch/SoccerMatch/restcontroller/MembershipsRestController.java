@@ -18,7 +18,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.soccermatch.SoccerMatch.entity.Fields;
 import com.soccermatch.SoccerMatch.entity.Memberships;
+import com.soccermatch.SoccerMatch.entity.People;
 import com.soccermatch.SoccerMatch.service.IMembershipsService;
 
 @RestController
@@ -47,6 +49,16 @@ public class MembershipsRestController {
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<Memberships>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value = "/memberhips/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< List<People> > fetchTeamMembers(@PathVariable("id") Integer id) {
+		try {
+			List<People> Membership = membershipsService.fetchTeamMembers(id);
+			return new ResponseEntity< List<People>  >(Membership, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity< List<People>  >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	

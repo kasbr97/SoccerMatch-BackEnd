@@ -50,4 +50,8 @@ public class FieldsService implements IFieldsService {
     public void deleteAll() throws Exception {
         fieldsRepository.deleteAll();
     }
+	@Override
+	public List<Fields> fetchPlaceFields(Integer id) throws Exception {
+		return fieldsRepository.fetchPlaceFields(id);
+	}
 }

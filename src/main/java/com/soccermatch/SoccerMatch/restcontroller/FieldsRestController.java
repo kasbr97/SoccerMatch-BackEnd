@@ -50,6 +50,16 @@ public class FieldsRestController {
 		}
 	}
 	
+	@GetMapping(value = "/fields/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< List<Fields> > fetchPlaceFields(@PathVariable("id") Integer id) {
+		try {
+			List<Fields> Field = fieldsService.fetchPlaceFields(id);
+			return new ResponseEntity< List<Fields>  >(Field, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity< List<Fields>  >(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@PostMapping( consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<Fields> save( @Valid @RequestBody Fields Fields ) {
 		try {

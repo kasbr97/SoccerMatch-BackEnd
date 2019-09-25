@@ -12,6 +12,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface IMembershipsRepository extends JpaRepository<Memberships,Integer> {
 	
-	@Query("select p from People p join Membership m on m.person_id = p.id where m.team_id = ?1")
+	@Query(value ="from People p join Memberships m on m.id_person = p.id where m.id_team = ?1", nativeQuery = true)
 	List<People>fetchTeamMembers(Integer id);
 }
