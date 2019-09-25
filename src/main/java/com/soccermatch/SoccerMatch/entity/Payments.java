@@ -10,10 +10,6 @@ public class Payments {
 	@Column(columnDefinition = "SMALLINT(4)")
     private int id;
     
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="id_membership",nullable = false)
-    private Memberships memberships;
-    
 	@ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_rent",nullable = false)
     private Rents rents;
@@ -44,12 +40,5 @@ public class Payments {
     public void setShare(float share) {
         this.share = share;
     }
-    public Memberships getMembership() {
-		return memberships;
-	}
-
-	public void setMembership(Memberships memberships) {
-		this.memberships = memberships;
-	}
 
 }
