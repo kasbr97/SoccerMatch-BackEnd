@@ -1,15 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-<<<<<<< HEAD
-    url: jdbc:mysql://  ryvdxs57afyjk41z.cbetxkdyhwsb.us-east-1.rds.amazonaws.com/yb4ntydet2jdwgzm?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
-    username: qagx7c1qnq1qyjyn
-    password: zqdnjqy0qs6yg8hc
-=======
     url: jdbc:mysql://localhost:3306/soccermatch?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC
     username: root
     password: root
->>>>>>> 85402b04fbd39b15e1ed1504924dfba296a75f14
   jpa:
     database: MYSQL
     hibernate:

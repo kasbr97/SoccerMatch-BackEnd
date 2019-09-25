@@ -1,3 +1,10 @@
 Manifest-Version: 1.0
+<<<<<<< HEAD
 Class-Path: 
+=======
+Implementation-Title: SoccerMatch
+Implementation-Version: 1.0
+Build-Jdk-Spec: 1.8
+Created-By: Maven Integration for Eclipse
+>>>>>>> 85402b04fbd39b15e1ed1504924dfba296a75f14
 
