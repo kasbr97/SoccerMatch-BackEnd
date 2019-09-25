@@ -27,11 +27,6 @@ public class Memberships {
     private boolean role;
     @OneToMany(mappedBy = "memberships",cascade = CascadeType.ALL)
     private List<Rents> rents;
-<<<<<<< HEAD
-=======
-    @OneToMany(mappedBy = "memberships",cascade = CascadeType.ALL)
-    private List<Payments> payments;
->>>>>>> 85402b04fbd39b15e1ed1504924dfba296a75f14
     public Teams getTeams() {
         return teams;
     }
