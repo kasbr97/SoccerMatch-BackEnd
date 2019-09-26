@@ -1,6 +1,7 @@
 package com.soccermatch.SoccerMatch.service.impl;
 
 import com.soccermatch.SoccerMatch.entity.People;
+import com.soccermatch.SoccerMatch.entity.Teams;
 import com.soccermatch.SoccerMatch.repository.IPeopleRepository;
 import com.soccermatch.SoccerMatch.service.IPeopleService;
 
@@ -50,4 +51,12 @@ public class PeopleService implements IPeopleService {
     public void deleteAll() throws Exception {
         peopleRepository.deleteAll();
     }
+	@Override
+	public Optional<People> fetchUserByUsername(String username) throws Exception {
+		return peopleRepository.fetchUserByUsername(username);
+	}
+	@Override
+	public Optional<List<Teams>> fetchTeamsByUsers(Integer id) throws Exception {
+		return peopleRepository.fetchTeamsByUser(id);
+	}
 }

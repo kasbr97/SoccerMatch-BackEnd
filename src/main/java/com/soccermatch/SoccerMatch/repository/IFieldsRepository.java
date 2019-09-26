@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 public interface IFieldsRepository extends JpaRepository<Fields,Integer> {
-	@Query(value = "from Fields f join Places p on f.id_places = p.id where p.id = ?1",nativeQuery = true)
+	@Query(value = "select * from Field f join Place p on f.id_places = p.id where p.id = ?1",nativeQuery = true)
 	List<Fields>fetchPlaceFields(Integer id);
 }

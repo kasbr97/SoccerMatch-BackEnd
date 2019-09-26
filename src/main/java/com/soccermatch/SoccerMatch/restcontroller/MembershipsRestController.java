@@ -52,7 +52,7 @@ public class MembershipsRestController {
 		}
 	}
 	
-	@GetMapping(value = "/memberhips/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	@GetMapping(value = "/memberships/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
 	public ResponseEntity< List<People> > fetchTeamMembers(@PathVariable("id") Integer id) {
 		try {
 			List<People> Membership = membershipsService.fetchTeamMembers(id);

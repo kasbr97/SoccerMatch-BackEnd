@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.soccermatch.SoccerMatch.entity.People;
+import com.soccermatch.SoccerMatch.entity.Teams;
 import com.soccermatch.SoccerMatch.service.IPeopleService;
 
 @RestController
@@ -47,6 +49,34 @@ public class PeopleRestController {
 			}
 		} catch (Exception e) {
 			return new ResponseEntity<People>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value = "/{username}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< People > fetchByUsername(@RequestParam(value = "username") String username) {
+		try {
+			Optional<People> People = peopleService.fetchUserByUsername(username);
+			if(People.isPresent()) {
+				return new ResponseEntity< People >(People.get(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<People>(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<People>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
+	@GetMapping(value = "/teams/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< List<Teams> > fetchTeamsById(@PathVariable("id") Integer id) {
+		try {
+			Optional<List<Teams>> Teams = peopleService.fetchTeamsByUsers(id);
+			if(Teams.isPresent()) {
+				return new ResponseEntity< List<Teams>  >(HttpStatus.OK);
+			} else {
+				return new ResponseEntity<List<Teams> >(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<List<Teams>>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 	
