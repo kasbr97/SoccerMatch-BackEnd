@@ -56,7 +56,8 @@ public class PeopleService implements IPeopleService {
 		return peopleRepository.fetchUserByUsername(username);
 	}
 	@Override
-	public Optional<List<Teams>> fetchTeamsByUsers(Integer id) throws Exception {
-		return peopleRepository.fetchTeamsByUser(id);
+	public List<People> fetchTeamMembers(Integer id) throws Exception {
+		return peopleRepository.fetchTeamMembers(id);
 	}
+	
 }

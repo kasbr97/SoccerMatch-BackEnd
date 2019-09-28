@@ -66,19 +66,16 @@ public class PeopleRestController {
 		}
 	}
 	
-	@GetMapping(value = "/teams/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity< List<Teams> > fetchTeamsById(@PathVariable("id") Integer id) {
+	@GetMapping(value = "/memberships/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< List<People> > fetchTeamMembers(@PathVariable("id") Integer id) {
 		try {
-			Optional<List<Teams>> Teams = peopleService.fetchTeamsByUsers(id);
-			if(Teams.isPresent()) {
-				return new ResponseEntity< List<Teams>  >(HttpStatus.OK);
-			} else {
-				return new ResponseEntity<List<Teams> >(HttpStatus.NOT_FOUND);
-			}
+			List<People> People = peopleService.fetchTeamMembers(id);
+			return new ResponseEntity< List<People>  >(People, HttpStatus.OK);
 		} catch (Exception e) {
-			return new ResponseEntity<List<Teams>>(HttpStatus.INTERNAL_SERVER_ERROR);
+			return new ResponseEntity< List<People>  >(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
+
 	
 	@PostMapping( consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<People> save( @Valid @RequestBody People People ) {

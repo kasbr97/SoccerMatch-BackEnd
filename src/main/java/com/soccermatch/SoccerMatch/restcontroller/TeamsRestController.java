@@ -50,6 +50,20 @@ public class TeamsRestController {
 		}
 	}
 	
+	@GetMapping(value = "/people/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public ResponseEntity< List<Teams> > fetchTeamsById(@PathVariable("id") Integer id) {
+		try {
+			Optional<List<Teams>> Teams = teamsservice.fetchTeamsByUsers(id);
+			if(Teams.isPresent()) {
+				return new ResponseEntity< List<Teams>  >(Teams.get(), HttpStatus.OK);
+			} else {
+				return new ResponseEntity<List<Teams> >(HttpStatus.NOT_FOUND);
+			}
+		} catch (Exception e) {
+			return new ResponseEntity<List<Teams>>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+	}
+	
 	@PostMapping( consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<Teams> save( @Valid @RequestBody Teams Teams ) {
 		try {

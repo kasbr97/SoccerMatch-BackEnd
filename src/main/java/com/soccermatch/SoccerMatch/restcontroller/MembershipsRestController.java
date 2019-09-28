@@ -52,15 +52,7 @@ public class MembershipsRestController {
 		}
 	}
 	
-	@GetMapping(value = "/memberships/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity< List<People> > fetchTeamMembers(@PathVariable("id") Integer id) {
-		try {
-			List<People> Membership = membershipsService.fetchTeamMembers(id);
-			return new ResponseEntity< List<People>  >(Membership, HttpStatus.OK);
-		} catch (Exception e) {
-			return new ResponseEntity< List<People>  >(HttpStatus.INTERNAL_SERVER_ERROR);
-		}
-	}
+
 	
 	@PostMapping( consumes = MediaType.APPLICATION_JSON_VALUE, produces=MediaType.APPLICATION_JSON_VALUE )
 	public ResponseEntity<Memberships> save( @Valid @RequestBody Memberships Memberships ) {

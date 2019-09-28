@@ -11,5 +11,5 @@ public interface IPeopleService extends CrudService<People,Integer> {
 	
 	Optional<People> fetchUserByUsername(String username) throws Exception;
 	
-	Optional<List<Teams>> fetchTeamsByUsers(Integer id) throws Exception;
+	List<People>fetchTeamMembers(Integer id) throws Exception;
 }

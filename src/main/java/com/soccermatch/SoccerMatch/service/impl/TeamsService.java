@@ -51,4 +51,8 @@ public class TeamsService implements ITeamsService {
     public void deleteAll() throws Exception {
         teamsRepository.deleteAll();
     }
+    @Override
+	public Optional<List<Teams>> fetchTeamsByUsers(Integer id) throws Exception {
+		return teamsRepository.fetchTeamsByUser(id);
+	}
 }

@@ -51,8 +51,4 @@ public class MembershipsService implements IMembershipsService {
     public void deleteAll() throws Exception {
         membershipsRepository.deleteAll();
     }
-	@Override
-	public List<People> fetchTeamMembers(Integer id) throws Exception {
-		return membershipsRepository.fetchTeamMembers(id);
-	}
 }
