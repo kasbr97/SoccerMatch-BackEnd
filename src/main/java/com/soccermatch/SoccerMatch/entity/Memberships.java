@@ -1,6 +1,8 @@
 package com.soccermatch.SoccerMatch.entity;
 
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
@@ -17,12 +19,12 @@ public class Memberships {
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_person",nullable = false)
     private  People person;
-    @Temporal(TemporalType.DATE)
+    
     @Column(name="member_since",nullable = false)
-    private Date member_since;
-    @Temporal(TemporalType.DATE)
+    private LocalDateTime member_since;
+    
     @Column(name="member_until",nullable = false)
-    private Date member_until;
+    private LocalDateTime member_until;
     @Column(name="role",nullable = false)
     private boolean role;
     @OneToMany(mappedBy = "memberships",cascade = CascadeType.ALL)
@@ -45,19 +47,19 @@ public class Memberships {
         this.person = person;
     }
 
-    public Date getMember_since() {
+    public LocalDateTime getMember_since() {
         return member_since;
     }
 
-    public void setMember_since(Date member_since) {
+    public void setMember_since(LocalDateTime member_since) {
         this.member_since = member_since;
     }
 
-    public Date getMember_until() {
+    public LocalDateTime getMember_until() {
         return member_until;
     }
 
-    public void setMember_until(Date member_until) {
+    public void setMember_until(LocalDateTime member_until) {
         this.member_until = member_until;
     }
 

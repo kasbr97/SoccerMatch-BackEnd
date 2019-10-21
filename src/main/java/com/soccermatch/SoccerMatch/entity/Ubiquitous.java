@@ -12,9 +12,9 @@ public class Ubiquitous {
     @Column(name="name",nullable=false)
     private String name;
     @Column(name="longitude",nullable=false)
-    private float longitude;
+    private double longitude;
     @Column(name="latitude",nullable=false)
-    private float latitude;
+    private double latitude;
     @OneToMany(mappedBy = "ubiquitous",cascade = CascadeType.ALL)
     private List<People> people;
 	@OneToMany(mappedBy = "ubiquitous",cascade = CascadeType.ALL)
@@ -34,19 +34,19 @@ public class Ubiquitous {
         this.name = name;
     }
 
-    public float getLongitude() {
+    public double getLongitude() {
         return longitude;
     }
 
-    public void setLongitude(float longitude) {
+    public void setLongitude(double longitude) {
         this.longitude = longitude;
     }
 
-    public float getLatitude() {
+    public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(float latitude) {
+    public void setLatitude(double latitude) {
         this.latitude = latitude;
     }
 }

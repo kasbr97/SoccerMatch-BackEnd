@@ -1,33 +1,44 @@
 package com.soccermatch.SoccerMatch.entity;
 
 import javax.persistence.*;
+
+import java.time.LocalDateTime;
 import java.util.Date;
 import java.util.List;
 
 @Entity
 @Table(name="Rent")
 public class Rents {
+	
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(columnDefinition = "SMALLINT(4)")
     private int id;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_membership",nullable = false)
     private Memberships memberships;
+    
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name="id_field",nullable = false)
     private Fields fields;
+    
     @Column(name="discount_percentage",nullable = false)
     private float discountPercentage;
+    
 	@Column(name="total_price",nullable = false)
     private float totalPrice;
-    @Temporal(TemporalType.DATE)
+	
+    
     @Column(name="rented_at",nullable = false)
-    private Date rentedAt;
+    private LocalDateTime rentedAt;
+    
     @Column(name="duration",nullable = false)
     private int duration;
+    
     @OneToMany(mappedBy = "rents",cascade = CascadeType.ALL)
     private List<Payments> payments;
+    
     public int getId() {
 		return id;
 	}
@@ -68,11 +79,11 @@ public class Rents {
         this.totalPrice = totalPrice;
     }
 
-    public Date getRentedAt() {
+    public LocalDateTime getRentedAt() {
         return rentedAt;
     }
 
-    public void setRentedAt(Date rentedAt) {
+    public void setRentedAt(LocalDateTime rentedAt) {
         this.rentedAt = rentedAt;
     }
 
