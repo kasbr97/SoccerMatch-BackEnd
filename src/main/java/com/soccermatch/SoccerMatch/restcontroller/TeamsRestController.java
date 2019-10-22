@@ -69,7 +69,9 @@ public class TeamsRestController {
 		try {
 			Teams tmp = teamsservice.Update(Teams);
 			if( tmp != null ) {
-				return new ResponseEntity<Teams>(HttpStatus.OK);
+				ResponseEntity<Teams> response = new ResponseEntity<Teams>(HttpStatus.OK);
+				return response.ok(tmp);
+				//return new ResponseEntity<Teams>(HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Teams>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}

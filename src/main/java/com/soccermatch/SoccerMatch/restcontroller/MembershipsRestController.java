@@ -59,7 +59,9 @@ public class MembershipsRestController {
 		try {
 			Memberships tmp = membershipsService.Update(Memberships);
 			if( tmp != null ) {
-				return new ResponseEntity<Memberships>(HttpStatus.OK);
+				ResponseEntity<Memberships> response = new ResponseEntity<Memberships>(HttpStatus.OK);
+				return response.ok(tmp);
+				//return new ResponseEntity<Memberships>(HttpStatus.OK);
 			} else {
 				return new ResponseEntity<Memberships>(HttpStatus.INTERNAL_SERVER_ERROR);
 			}

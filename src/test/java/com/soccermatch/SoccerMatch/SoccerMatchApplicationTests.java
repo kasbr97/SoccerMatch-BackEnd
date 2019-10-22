@@ -82,7 +82,10 @@ public class SoccerMatchApplicationTests {
 		
 		//When client sends a Get Request to /rents Endpoint with an Id
 		Rents rent = restTemplate.getForObject(getRentsUrlForId(2), Rents.class);
-		System.out.println(rent.getId());
+		
+		if (rent!= null) {
+			System.out.println(rent.getId());
+		}
 		//Then a Not Null response is received
 		assertNotNull(rent);
 	}
