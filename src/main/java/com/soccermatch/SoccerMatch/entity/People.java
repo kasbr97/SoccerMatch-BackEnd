@@ -12,17 +12,17 @@ public class People {
     private int id;
     @Column(name="name",nullable = false)
     private String name;
-    @Column(name="dni",nullable=false)
+    @Column(name="dni",nullable=true)
     private int dni;
-    @Column(name="phone_number",nullable=false)
+    @Column(name="phone_number",nullable=true)
     private String phoneNumber;
     @Column(name="email",nullable=false)
     private String email;
-	@Column(name="username",nullable=false)
+	@Column(name="username",nullable=true)
     private String username;
     @Column(name="password",nullable=false)
     private String password;
-    @Column(name="partner",nullable=false)
+    @Column(name="partner",nullable=true)
     private boolean partner;
     @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Memberships> memberships;
