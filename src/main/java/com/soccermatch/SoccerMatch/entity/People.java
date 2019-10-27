@@ -27,7 +27,7 @@ public class People {
     @OneToMany(mappedBy = "person",cascade = CascadeType.ALL)
     private List<Memberships> memberships;
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name="id_ubiquitous",nullable = false)
+    @JoinColumn(name="id_ubiquitous",nullable = true)
     private Ubiquitous ubiquitous;
     public int getId() {
 		return id;
