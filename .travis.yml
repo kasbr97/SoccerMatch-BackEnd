@@ -2,3 +2,15 @@ language: java
 install:
 - mvn -N io.takari:maven:wrapper
 - ./mvnw install -DskipTests=true -Dmaven.javadoc.skip=true -B -V
+
+secure: "IwERrxWkwfj6XZkZVWakgT9LNdPpVL+2fUbK7lEK/OCYBMBaoJMQOfyIZudGKhui+55rW30bJNZCiJXd4oFeMduUA5cro8CQb9CT0UTf0Kp6st7amS2JHlinx4GPaHGq3QACjSQoGVZDLG3pbxBR/yA3WeYEiKo4He3GDPGS7BwNUfpvSqdTTIZnHCCwuMGwH0YfYWFSk+4jCrFd3wglNfF4uA4gJ1bv27ltw/e0FyD9zi6Ut6COxv2X0X15AMPwrVCz+0ABAPySYu+m0s3UTA/ozjHk3QMc9EEVwhH7jZj0FSkB8qmpC6WziFmlkjB4Fjr55FMmRB6FXmbwE2GFszGzFgAOyPk81P/v1xZyFdo1OrhgeCoUE3KJOjsraVZtfYdVzoAREmxpkSonUUTDIabnlUmx6HbI/w4S/pbWrzn5BV1ksdp0AMoUv/eagOtaHsZZJbNnlQb7ItUq31ZafdLTyz2eK5rg8bNr/6syoR/D/lML4KWW2GWtBUe8cyp8lLD8nQ5ie6iTtU3m6xTCae4Pl/qNBqPMiRNPVFYOa25r/w6XK/DjJrjrnI1+KqGum2EsEekLT1UoE2DBHvlqIDLg5xPu6b0y9mkhYTC88/rgWduTZAqzpQvCdvTAUcCVrU6EYwpocCGjlXf+AEVRVpWEHrw+QEYM/PjhEax3bhg="
+
+addons:
+  sonarcloud:
+    organization: "kasbr97-1"
+    token:
+      secure: "IwERrxWkwfj6XZkZVWakgT9LNdPpVL+2fUbK7lEK/OCYBMBaoJMQOfyIZudGKhui+55rW30bJNZCiJXd4oFeMduUA5cro8CQb9CT0UTf0Kp6st7amS2JHlinx4GPaHGq3QACjSQoGVZDLG3pbxBR/yA3WeYEiKo4He3GDPGS7BwNUfpvSqdTTIZnHCCwuMGwH0YfYWFSk+4jCrFd3wglNfF4uA4gJ1bv27ltw/e0FyD9zi6Ut6COxv2X0X15AMPwrVCz+0ABAPySYu+m0s3UTA/ozjHk3QMc9EEVwhH7jZj0FSkB8qmpC6WziFmlkjB4Fjr55FMmRB6FXmbwE2GFszGzFgAOyPk81P/v1xZyFdo1OrhgeCoUE3KJOjsraVZtfYdVzoAREmxpkSonUUTDIabnlUmx6HbI/w4S/pbWrzn5BV1ksdp0AMoUv/eagOtaHsZZJbNnlQb7ItUq31ZafdLTyz2eK5rg8bNr/6syoR/D/lML4KWW2GWtBUe8cyp8lLD8nQ5ie6iTtU3m6xTCae4Pl/qNBqPMiRNPVFYOa25r/w6XK/DjJrjrnI1+KqGum2EsEekLT1UoE2DBHvlqIDLg5xPu6b0y9mkhYTC88/rgWduTZAqzpQvCdvTAUcCVrU6EYwpocCGjlXf+AEVRVpWEHrw+QEYM/PjhEax3bhg="
+
+script:
+  # the following command line builds the project, runs the tests with coverage and then execute the SonarCloud analysis
+  - mvn clean org.jacoco:jacoco-maven-plugin:prepare-agent install sonar:sonar
